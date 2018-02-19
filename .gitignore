@@ -17,6 +17,9 @@
 *.launch
 .settings/
 *.sublime-workspace
+/config/database.js
+/config/provider.js
+/config/manager.js
 
 # IDE - VSCode
 .vscode/*

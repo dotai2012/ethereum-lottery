@@ -1,0 +1,36 @@
+<div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Thanh Toán Affiliate</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+              <hr>
+              <div class="row">
+                <div class="col-sm-12">
+                  <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info"
+                    style="width: 100%;">
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending"
+                          aria-label="Name: activate to sort column descending" style="width: 187px;">Email</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending"
+                          style="width: 286px;">Amount (ETH)</th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending"
+                          style="width: 286px;">Control</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr role="row" *ngFor="let item of withdrawalRequestList">
+                        <td>{{ item.email }}</td>
+                        <td>{{ item.ref.length * 0.0035 }}</td>
+                        <td><button type="button" class="btn btn-success" (click)="onPay(item.email, item.ref.length * 0.0035, item.address)">Thanh Toán</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+      

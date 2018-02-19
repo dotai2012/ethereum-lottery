@@ -1,0 +1,74 @@
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+const userSchema = mongoose.Schema({
+  manager: {
+    type: Boolean,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  address: {
+    type: String,
+  },
+  withdraw: {
+    type: Boolean,
+  },
+  ref: {
+    type: Array,
+  },
+  totalRef: {
+    type: Number,
+  },
+});
+
+const user = mongoose.model('User', userSchema);
+module.exports = user;
+module.exports.getUserID = (id, callback) => {
+  user.findById(id, callback);
+};
+module.exports.getUser = (email, callback) => {
+  const query = { email };
+  user.findOne(query, callback).exec();
+};
+module.exports.getwithdrawalrequestlist = (query, callback) => {
+  user.find(query, callback).exec();
+};
+module.exports.addUser = (newUser, callback) => {
+  bcrypt.hash(newUser.password, 10, (err, hash) => {
+    newUser.password = hash;
+    newUser.save(callback);
+  });
+};
+module.exports.comparePass = (password, hash, callback) => {
+  bcrypt.compare(password, hash, (err, isMatch) => {
+    callback(null, isMatch);
+  });
+};
+module.exports.finRefs = (ref, callback) => {
+  const query = { ref };
+  user.find(query, callback).exec();
+};
+module.exports.updateRef = (_id, ref, callback) => {
+  user.findByIdAndUpdate(_id, { $push: { ref }, $inc: { totalRef: 1 } }, callback);
+};
+module.exports.updateInfo = (email, data, callback) => {
+  const query = { email };
+  user.findOneAndUpdate(query, data, callback);
+};
+module.exports.updatePassword = (email, newPassword, callback) => {
+  const query = { email };
+  bcrypt.hash(newPassword, 10, (err, hash) => {
+    user.findOneAndUpdate(query, { password: hash }, callback);
+  });
+};

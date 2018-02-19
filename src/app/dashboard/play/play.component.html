@@ -1,0 +1,20 @@
+<app-profile></app-profile>
+<div class="col-sm-12 col-md-8 offset-md-2">
+    <br>
+    <div class="alert alert-danger" role="alert" *ngIf="this.notFoundMeta">
+      <h4 class="alert-heading">Không phát hiện Meta Mask, tải tại <a href="https://metamask.io/" target="_blank">ĐÂY</a></h4>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-7 offset-md-2" *ngIf="!this.notFoundMeta">
+      <div class="alert alert-info" role="alert">
+          <h4 class="alert-heading">Những Điều Nên Biết Trước Khi Tham Gia</h4>
+          <ul>
+            <li>Bạn chỉ được tham gia 1 lần mỗi tuần (nút tham gia sẽ tự động khoá)</li>
+            <li>Bạn cần cài đặt Metamask để tham gia, tải tại <a href="https://metamask.io/" target="_blank">ĐÂY</a></li>
+            <li>Danh sách người trúng giải đặc biệt và giải ản ủi có thể xem ở trang chủ</li>
+          </ul>
+          <hr>
+          <p class="mb-0">Nếu chưa rõ điều gì, bạn có thể email, chúng tôi sẽ cố gắng hồi âm nhanh nhất có thể</p>
+        </div>
+      <button [attr.disabled]="isInTheGame" type="button" class="btn btn-primary lucky-btn" (click)="this.onPlay()">Thử Vận May</button>
+  </div>

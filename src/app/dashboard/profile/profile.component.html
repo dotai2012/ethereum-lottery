@@ -1,0 +1,27 @@
+<br>
+<div class=" col-sm-12 col-md-7 offset-md-3">
+    <h4>Thông Tin Tài Khoản</h4>
+    <div class="alert alert-success" role="alert" *ngIf="isUpdated">
+        Cập nhật thông tin thành công
+      </div>
+    <form>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" [(ngModel)]="name" name="name">
+            </div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-success" (click)="onUpdateName()">Thay Đổi</button>
+              </div>
+          </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-6">
+            <input type="password" class="form-control" [(ngModel)]="password" name="password" (keyup)="onChangePassword()">
+          </div>
+          <div class="col-sm-4">
+              <button [attr.disabled]="disabled ? '' : null" type="button" class="btn btn-success" (click)="onUpdatePassword()">Thay Đổi</button>
+            </div>
+        </div>
+      </form>
+</div>

@@ -1,0 +1,61 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i> Refer A Friend</div>
+    <div class="container">
+      <hr>
+      <ng-template #content let-c="close" let-d="dismiss">
+          <ngb-alert [dismissible]="false" *ngIf="isSent" type="success">Đã gửi yêu cầu</ngb-alert>
+        <div class="modal-header">
+          <h4 class="modal-title">Gửi Yêu Cầu Rút Tiền</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Vui lòng cập nhật (hoặc kiểm tra) địa chỉ ETH của bạn tại đây. Tiền của bạn sẽ được gửi sau 1-3 ngày</p>
+          <input type="text" class="form-group" [(ngModel)]="address" name="address">
+        </div>
+        <div class="modal-footer">
+          <button type="button" [attr.disabled]="disabledReq2 ? '' : null" class="btn btn-primary" (click)="onWithdrawalRequest()">Gửi</button>
+          <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Cancel</button>
+        </div>
+      </ng-template>
+        <form>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Link Ref</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" [value]="linkRef">
+              </div>
+              <div class="col-sm-5">
+                  <button type="button" [attr.disabled]="disabledReq1 ? '' : null" class="btn btn-success" (click)="open(content)">{{ withdrawText }}</button>
+                  <label>Số dư: {{balance}} ETH || Tổng số người đã mời: {{totalRef}}</label>
+                </div>
+            </div>
+          </form>
+    </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+        <hr>
+        <div class="row">
+          <div class="col-sm-12">
+            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info"
+              style="width: 100%;">
+              <thead>
+                <tr role="row">
+                  <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending"
+                    aria-label="Name: activate to sort column descending" style="width: 187px;">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr role="row" *ngFor="let item of refList">
+                  <td>{{ item }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
