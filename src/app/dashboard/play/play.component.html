@@ -22,7 +22,7 @@
         <h4 class="alert-heading">Không phát hiện Meta Mask, tải tại <a href="https://metamask.io/" target="_blank">ĐÂY</a></h4>
       </div>
     <div class="lucky-outer">
-        <button [attr.disabled]="isInTheGame" type="button" class="btn btn-primary lucky-btn" (click)="this.onPlay()">Thử Vận May</button>
+        <button [attr.disabled]="disablePlay" type="button" class="btn btn-primary lucky-btn" (click)="this.onPlay()">Thử Vận May</button>
     </div>
   </div>
   <div class="col-md-6 col-sm-12">
@@ -37,7 +37,7 @@
               <li>Danh sách người trúng giải đặc biệt và giải ản ủi có thể xem ở trang chủ</li>
             </ul>
             <hr>
-            <p>*: Do vấn đề bảo mật</p>
+            <p>* Do vấn đề bảo mật</p>
             <p class="mb-0">Nếu chưa rõ điều gì, bạn có thể email, chúng tôi sẽ cố gắng hồi âm nhanh nhất có thể</p>
           </div>
     </div>
