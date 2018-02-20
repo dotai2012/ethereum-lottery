@@ -30,7 +30,8 @@ export class PlayComponent implements OnInit {
         this.accounts = await this.web3.instance.eth.getAccounts();
         this.players = await this.web3.Contract().methods.getPlayers().call();
         this.isInTheGame = this.players.indexOf(this.accounts[0]);
-        if (this.isInTheGame === -1) {
+        console.log(this.isInTheGame);
+        if (this.isInTheGame !== -1) {
           this.disablePlay = true;
         }
         this.web3.instance.eth.getBalance(this.web3.Contract().options.address).then(value => {
