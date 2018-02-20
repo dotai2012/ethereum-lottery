@@ -13,7 +13,7 @@ import { Title } from '@angular/platform-browser';
 export class PlayComponent implements OnInit {
   notFoundMeta: Boolean = false;
   isInTheGame;
-  disablePlay: Boolean = true;
+  disablePlay: Boolean = false;
   accounts = [];
   players = [];
   totalPrize;
@@ -31,7 +31,7 @@ export class PlayComponent implements OnInit {
         this.players = await this.web3.Contract().methods.getPlayers().call();
         this.isInTheGame = this.players.indexOf(this.accounts[0]);
         if (this.isInTheGame === -1) {
-          this.disablePlay = false;
+          this.disablePlay = true;
         }
         this.web3.instance.eth.getBalance(this.web3.Contract().options.address).then(value => {
           this.totalPrize =  this.web3.instance.utils.fromWei(value, 'ether');
