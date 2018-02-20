@@ -14,7 +14,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     if (this.router.url !== '/') {
       if (this.router.url !== '/referal') {
-        this.isDashboard = true;
+        if (this.router.url !== '/#about') {
+          this.isDashboard = true;
+        }
       }
     }
   }

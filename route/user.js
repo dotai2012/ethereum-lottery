@@ -5,19 +5,26 @@ const jwt = require('jsonwebtoken');
 const User = require('../model/user');
 const database = require('../config/database');
 const passport = require('passport');
+const Web3 = require('web3');
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const getTransactionReceiptMined = require('../lib/getTransactionReceiptMined');
+const { mnemonic, network } = require('../config/provider');
 
-// router.get('/login', (req, res) => {
-//   res.send('Login Page');
-// });
+const provider = new HDWalletProvider(mnemonic, network);
+const web3 = new Web3(provider);
 
 router.post('/register', (req, res) => {
+  const {
+    name, email, password, bonus,
+  } = req.body;
   const newUser = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
+    name,
+    email,
+    password,
     address: '0x0000000000000000',
     manager: false,
     withdraw: false,
+    bonus,
   });
   User.addUser(newUser, (err) => {
     if (err) {
@@ -61,19 +68,23 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
   res.json({ user: req.user });
 });
 
-router.post('/updateref', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const { _id, ref } = req.body;
-  User.finRefs(ref, (err, refFound) => {
-    const { length } = refFound;
-    if (length === 0) {
-      User.updateRef(_id, ref, (err, result) => {
-        if (err) throw err;
-        res.json({ success: true, msg: 'Updated ref elements', result });
-      });
-    } else {
-      res.json({ success: false, msg: 'Duplicate ref' });
-    }
-  });
+router.post('/updateref', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  web3.eth.getTransactionReceiptMined = getTransactionReceiptMined;
+  const { _id, ref, hash } = req.body;
+  const TXresult = await web3.eth.getTransactionReceiptMined(hash);
+  if (TXresult) {
+    User.finRefs(ref, (err, refFound) => {
+      const { length } = refFound;
+      if (length === 0) {
+        User.updateRef(_id, ref, (err, result) => {
+          if (err) throw err;
+          res.json({ success: true, msg: 'Updated ref elements', result });
+        });
+      } else {
+        res.json({ success: false, msg: 'Duplicate ref' });
+      }
+    });
+  }
 });
 
 router.post('/updatename', passport.authenticate('jwt', { session: false }), (req, res) => {

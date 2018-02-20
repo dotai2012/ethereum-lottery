@@ -11,8 +11,8 @@ export class ProfileComponent implements OnInit {
   userProfile;
   name: String;
   email: String;
-  instancePassword = 'Change password';
-  password = 'Change password';
+  password: String = 'Change password';
+  confirmPassword: String = 'Change password';
   disabled: Boolean = true;
   isUpdated: Boolean = false;
   constructor(private data: DataService, private auth: AuthService) { }
@@ -25,17 +25,21 @@ export class ProfileComponent implements OnInit {
     });
   }
   onChangePassword() {
-    console.log(this.disabled);
-    if (this.password !== this.instancePassword) {
+    console.log(this.password, this.password === this.confirmPassword);
+    if (this.password !== this.confirmPassword) {
+      this.disabled = true;
+    } else {
       this.disabled = false;
     }
   }
   onUpdateName() {
     this.isUpdated = true;
-    this.data.updateName({email: this.email, name: this.name}).subscribe(console.log);
+    this.data.updateName({email: this.email, name: this.name});
   }
   onUpdatePassword() {
-    this.isUpdated = true;
-    this.data.updatePassword({email: this.email, password: this.password}).subscribe(console.log);
+    if (this.password === this.confirmPassword) {
+      this.isUpdated = true;
+      this.data.updatePassword({email: this.email, password: this.password});
+    }
   }
 }

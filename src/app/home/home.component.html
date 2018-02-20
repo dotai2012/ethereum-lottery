@@ -7,10 +7,13 @@
         <h1 class="text-uppercase">
           <strong>Xổ Số Trên Nền Tảng Blockchain Dành Cho Người Việt</strong>
         </h1>
+        <h3 class="text-uppercase" *ngIf="showPrize">
+          <strong>Tổng giải thưởng hiện tại: {{ totalPrize }} ETH</strong>
+        </h3>
         <hr>
       </div>
       <div class="col-lg-8 mx-auto">
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Tham Gia Ngay</a>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" routerLink="/login">Tham Gia Ngay</a>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Tìm Hiểu Thêm</a>
       </div>
     </div>
@@ -26,8 +29,8 @@
         <p class="text-faded mb-4">Chương trình sẽ bắt đầu vào chủ nhật hằng tuần (với điều  kiện giải thưởng lớn hơn 2 ETH)</p>
         <ul class="prize-list">
           <li>70% Số tiền sẽ gửi cho người chiến thắng (ngẫu nhiên)</li>
-          <li>20% Số tiền sẽ gửi cho 10% số người người chơi (ngẫu nhiên)</li>
-          <li>7% Sẽ dùng cho mục đích quảng bá, affiliate marketing</li>
+          <li>15% Số tiền sẽ gửi cho 5% số người người chơi (ngẫu nhiên)</li>
+          <li>12% Sẽ dùng cho mục đích quảng cáo và affiliate marketing</li>
           <li>3% Dành cho nhà phát triển</li>
         </ul>
       </div>

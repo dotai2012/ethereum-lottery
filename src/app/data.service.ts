@@ -2,9 +2,11 @@ import { AuthService } from './auth.service';
 import { WindowService } from './window.service';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import deployType from './../deploy.type';
 
 @Injectable()
 export class DataService {
+  url: String = deployType === 'development' ? 'http://localhost:3000/' : '';
   user = JSON.parse(localStorage.getItem('user'));
 
   constructor(private windowRef: WindowService, private http: Http, private auth: AuthService) { }
@@ -22,24 +24,24 @@ export class DataService {
     return ref;
   }
   updateName(data: Object) {
-    return this.authPostReq('http://localhost:3000/user/updatename', data);
+    return this.authPostReq(`${this.url}user/updatename`, data);
   }
   updateAddress(data: Object) {
-    return this.authPostReq('http://localhost:3000/user/updateaddress', data);
+    return this.authPostReq(`${this.url}user/updateaddress`, data);
   }
   withdrawalRequest(data) {
-    return this.authPostReq('http://localhost:3000/user/withdrawalrequest', data);
+    return this.authPostReq(`${this.url}user/withdrawalrequest`, data);
   }
   withdrawalRequestList() {
-    return this.authPostReq('http://localhost:3000/user/withdrawalrequestlist', { withdraw: true });
+    return this.authPostReq(`${this.url}user/withdrawalrequestlist`, { withdraw: true });
   }
   payComplete(email) {
-    return this.authPostReq('http://localhost:3000/user/paycomplete', {email});
+    return this.authPostReq(`${this.url}user/paycomplete`, {email});
   }
   updatePassword(data: Object) {
-    return this.authPostReq('http://localhost:3000/user/updatepassword', data);
+    return this.authPostReq(`${this.url}user/updatepassword`, data);
   }
   pushRefList(data: Object) {
-    this.authPostReq('http://localhost:3000/user/updateref', data);
+    this.authPostReq(`${this.url}user/updateref`, data);
   }
 }

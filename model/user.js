@@ -21,6 +21,9 @@ const userSchema = mongoose.Schema({
   address: {
     type: String,
   },
+  bonus: {
+    type: Boolean,
+  },
   withdraw: {
     type: Boolean,
   },

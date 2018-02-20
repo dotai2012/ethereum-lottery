@@ -41,7 +41,7 @@ const appRoutes: Routes = [
       {path: 'play', component: PlayComponent},
       {path: 'affiliate', component: AffiliateComponent}
     ], canActivate: [GuardService]},
-  {path: '**', component: HomeComponent}
+  {path: '**', redirectTo: '/'}
 ];
 
 @NgModule({

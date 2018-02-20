@@ -3,7 +3,8 @@ pragma solidity ^0.4.20;
 contract Lottery {
     address public manager;
     address[] public players;
-    address public winner;
+    address public lastWinner;
+    address[] public lastConsolationPrize;
     uint[] consolationPrizeIndexes;
     
     function Lottery() public {
@@ -42,33 +43,38 @@ contract Lottery {
     function random() private restricted view returns (uint) {
         return uint(keccak256(block.difficulty, now, players));
     }
-    // Due to cost a lot of gas, Consolation Prize random numbers will be done on server side
-    function setConsolationPrizePlayerIndexes(uint[] value) public restricted {
-        consolationPrizeIndexes = value;
-    }
     function pickWinner() public restricted {
-        uint consolationLength = consolationPrizeIndexes.length;
-        require(consolationLength != 0);
         uint indexWinner = random() % players.length;
-        uint authorPrize = this.balance / 100 * 10;
+        uint authorPrize = this.balance / 100 * 15;
         uint winnerPrize = this.balance / 100 * 70;
-        uint consolationPrize = this.balance - authorPrize - winnerPrize;
-        uint eachConsolationPrize = consolationPrize / consolationLength;
-        uint consolationPrizeIndex;
 
-        winner = players[indexWinner];
+        lastWinner = players[indexWinner];
+        players[indexWinner] = players[players.length - 1];
+        delete players[players.length - 1];
 
         manager.transfer(authorPrize);
-        players[indexWinner].transfer(winnerPrize);
-        for (uint index = 0; index < consolationLength; index++) {
-            consolationPrizeIndex = consolationPrizeIndexes[index];
-            players[consolationPrizeIndex].transfer(eachConsolationPrize);
-        }
-        players = new address[](0);
-        consolationPrizeIndexes = new uint[](0);
+        lastWinner.transfer(winnerPrize);
     }
     function getPlayers() public view returns (address[]) {
         return players;
     }
-    
+    // Due to cost a lot of gas, Consolation Prize random numbers will be done on server side
+    function pickConsolationPrize(uint[] value) public restricted {
+        consolationPrizeIndexes = value;
+        lastConsolationPrize = new address[](0);
+        uint consolationLength = consolationPrizeIndexes.length;
+        uint consolationPrize = this.balance;
+        uint eachConsolationPrize = consolationPrize / consolationLength;
+        uint consolationPrizeIndex;
+        for (uint index = 0; index < consolationLength; index++) {
+            consolationPrizeIndex = consolationPrizeIndexes[index];
+            players[consolationPrizeIndex].transfer(eachConsolationPrize);
+            lastConsolationPrize.push(players[consolationPrizeIndex]);
+        }
+        consolationPrizeIndexes = new uint[](0);
+        players = new address[](0);
+    }
+    function getLastConsolationPrize() public view returns (address[]) {
+        return lastConsolationPrize;
+    }
 }

@@ -1,6 +1,10 @@
-.lucky-btn{
+.lucky-outer{
     width: 20rem;
     height: 12rem;
+    margin: 5em auto;
+}
+.lucky-btn{
+    width: 100%;
+    height: 12rem;
     font-size: 2em;
-    margin-left: 25%;
 }

@@ -11,7 +11,7 @@ import 'rxjs/add/operator/filter';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent implements OnInit {
   showAlert: Boolean = false;
   name: String;
   email: String;
@@ -43,11 +43,11 @@ export class RegisterComponent implements OnInit{
     };
     // Validate Fields
     if (this.validate.validateRegister(user) && this.validate.validateEmail(this.email)) {
+      if (this.cookie.get('Ref')) {
+        user['bonus'] = true;
+      }
         this.auth.registerUser(user).subscribe(data => {
           if (data.success) {
-            // For test
-            // this.data.pushRefList({_id: this.cookie.get('Ref'), ref: this.email});
-            // For test
             this.router.navigate(['/login']);
           } else {
             console.log(data);

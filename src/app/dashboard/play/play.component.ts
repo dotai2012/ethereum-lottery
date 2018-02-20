@@ -14,7 +14,7 @@ export class PlayComponent implements OnInit {
   isInTheGame;
   accounts = [];
   players = [];
-  prize;
+  totalPrize;
 
   constructor(
     private data: DataService,
@@ -27,7 +27,7 @@ export class PlayComponent implements OnInit {
         this.players = await this.web3.Contract().methods.getPlayers().call();
         this.isInTheGame = this.players.indexOf(this.accounts[0]);
         this.web3.instance.eth.getBalance(this.web3.Contract().options.address).then(value => {
-          this.prize =  this.web3.instance.utils.fromWei(value, 'ether');
+          this.totalPrize =  this.web3.instance.utils.fromWei(value, 'ether');
         });
       } catch (error) {
         this.notFoundMeta = true;
@@ -37,16 +37,15 @@ export class PlayComponent implements OnInit {
     const utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
     return utc;
   }
-  async onPlay() {
+  onPlay() {
     if (this.isInTheGame === -1) {
       try {
-        const play = await this.web3.Contract().methods.enter('lotto').send({
+        const play = this.web3.Contract().methods.enter('lotto').send({
           from: this.accounts[0],
           value: this.web3.instance.utils.toWei('0.05', 'ether'),
-        });
-        if (play) {
-          this.data.pushRefList({_id: this.cookie.get('Ref'), ref: JSON.parse(localStorage.getItem('user')).email});
-        }
+        }).on('transactionHash', (hash) => {
+          this.data.pushRefList({_id: this.cookie.get('Ref'), ref: JSON.parse(localStorage.getItem('user')).email, hash});
+      });
       } catch (error) {
         console.log('Rejected');
       }

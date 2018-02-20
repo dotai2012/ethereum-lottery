@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { tokenNotExpired } from 'angular2-jwt';
+import deployType from './../deploy.type';
+
 @Injectable()
 export class AuthService {
+  url: String = deployType === 'development' ? 'http://localhost:3000/' : '';
   authToken: any;
   user: any;
 
@@ -14,7 +17,7 @@ export class AuthService {
    this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/user/profile', {headers}).map(res => res.json());
+    return this.http.get(`${this.url}user/profile`, {headers}).map(res => res.json());
   }
 
   loadToken() {
@@ -26,12 +29,12 @@ export class AuthService {
   registerUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/user/register', user, {headers}).map(res => res.json());
+    return this.http.post(`${this.url}user/register`, user, {headers}).map(res => res.json());
   }
   authenticateUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/user/authenticate', user, {headers}).map(res => res.json());
+    return this.http.post(`${this.url}user/authenticate`, user, {headers}).map(res => res.json());
   }
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);
