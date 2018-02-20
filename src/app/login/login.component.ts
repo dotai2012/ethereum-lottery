@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +16,12 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private title: Title,
     ) { }
 
   ngOnInit() {
+    this.title.setTitle('Đăng Nhập Tài Khoản | Blockchain Lotto');
     if (this.authService.loadToken()) {
       this.router.navigate(['/dashboard']);
     }

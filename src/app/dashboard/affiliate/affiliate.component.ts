@@ -2,6 +2,7 @@ import { AuthService } from './../../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-affiliate',
@@ -23,9 +24,10 @@ export class AffiliateComponent implements OnInit {
 
   isSent: Boolean = false;
   balance: Number;
-  constructor(private data: DataService, private auth: AuthService, private modal: NgbModal) { }
+  constructor(private data: DataService, private auth: AuthService, private modal: NgbModal, private title: Title) { }
 
   ngOnInit() {
+    this.title.setTitle('Giới Thiệu Bạn Bè | Blockchain Lotto');
     this.auth.getProfile().subscribe(value => {
       this.userProfile = value.user;
       this.email = this.userProfile.email;

@@ -5,6 +5,7 @@ import { ValidateService } from '../validate.service';
 import { AuthService } from '../auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -25,10 +26,12 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private cookie: CookieService,
-    private data: DataService
+    private data: DataService,
+    private title: Title,
   ) { }
 
   ngOnInit() {
+    this.title.setTitle('Đăng Ký Tài Khoản | Blockchain Lotto');
     this.auth.logout();
     this.route.queryParams.subscribe(params => {this.params = params; });
     this.cookie.set( 'Ref', this.params.ref );

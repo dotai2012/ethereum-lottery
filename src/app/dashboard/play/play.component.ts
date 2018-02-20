@@ -3,6 +3,7 @@ import { DataService } from './../../data.service';
 import { WindowService } from './../../window.service';
 import { Component, OnInit } from '@angular/core';
 import { Web3Service } from '../../web3.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-play',
@@ -19,9 +20,11 @@ export class PlayComponent implements OnInit {
   constructor(
     private data: DataService,
     private web3: Web3Service,
-    private cookie: CookieService) { }
+    private cookie: CookieService,
+    private title: Title) { }
 
   async ngOnInit() {
+    this.title.setTitle('Chương Trình Xổ Số | Blockchain Lotto');
       try {
         this.accounts = await this.web3.instance.eth.getAccounts();
         this.players = await this.web3.Contract().methods.getPlayers().call();
