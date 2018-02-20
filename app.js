@@ -18,7 +18,7 @@ mongoose.connection.on('error', (error) => {
 });
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = 3000;
 
 app.use(compression({ level: 9 }));
 app.use(cors());
@@ -32,7 +32,7 @@ const user = require('./route/user');
 
 app.use('/user', user);
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
