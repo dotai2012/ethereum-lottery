@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { tokenNotExpired } from 'angular2-jwt';
-import deployType from './../deploy.type';
 
 @Injectable()
 export class AuthService {
-  url: String = deployType === 'development' ? 'http://localhost:3000/' : '';
+  url: String = '';
   authToken: any;
   user: any;
 

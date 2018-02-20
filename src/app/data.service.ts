@@ -2,11 +2,10 @@ import { AuthService } from './auth.service';
 import { WindowService } from './window.service';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import deployType from './../deploy.type';
 
 @Injectable()
 export class DataService {
-  url: String = deployType === 'development' ? 'http://localhost:3000/' : '';
+  url: String = '';
   user = JSON.parse(localStorage.getItem('user'));
 
   constructor(private windowRef: WindowService, private http: Http, private auth: AuthService) { }
