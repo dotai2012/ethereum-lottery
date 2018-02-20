@@ -22,7 +22,7 @@
         <h4 class="alert-heading">Không phát hiện Meta Mask, tải tại <a href="https://metamask.io/" target="_blank">ĐÂY</a></h4>
       </div>
     <div class="lucky-outer">
-        <button [attr.disabled]="disablePlay" type="button" class="btn btn-primary lucky-btn" (click)="this.onPlay()">Thử Vận May</button>
+        <button [attr.disabled]="disablePlay ? '' : null" type="button" class="btn btn-primary lucky-btn" (click)="this.onPlay()">Thử Vận May</button>
     </div>
   </div>
   <div class="col-md-6 col-sm-12">
