@@ -49,7 +49,7 @@ contract Lottery {
         lockGate = true;
         uint indexWinner = random() % players.length;
         uint authorPrize = this.balance / 100 * 15; // 12% for marketing 3% for developers
-        uint winnerPrize = this.balance / 100 * 50;
+        uint winnerPrize = this.balance / 2;
 
         lastWinner = players[indexWinner];
         players[indexWinner] = players[players.length - 1];
@@ -63,6 +63,7 @@ contract Lottery {
     }
     // Due to cost a lot of gas, Consolation Prize random numbers will be done on server side
     function pickConsolationPrize(uint[] value) public restricted {
+        require(lockGate == true);
         consolationPrizeIndexes = value;
         lastConsolationPrize = new address[](0);
         uint consolationLength = consolationPrizeIndexes.length;

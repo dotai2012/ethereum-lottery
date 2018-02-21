@@ -12,6 +12,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class PlayComponent implements OnInit {
   notFoundMeta: Boolean = false;
+  lockGate: Boolean = false;
   isInTheGame;
   disablePlay: Boolean = false;
   accounts = [];
@@ -32,13 +33,14 @@ export class PlayComponent implements OnInit {
       try {
         this.lastWinner = await this.web3.Contract().methods.lastWinner().call();
         this.lastConsolationPrize = await this.web3.Contract().methods.getLastConsolationPrize().call();
+        this.lockGate = await this.web3.Contract().methods.lockGate().call();
         this.accounts = await this.web3.instance.eth.getAccounts();
         if (this.lastConsolationPrize.indexOf(this.accounts[0]) !== -1 || this.accounts[0] === this.lastWinner) {
           this.showWinner = true;
         }
         this.players = await this.web3.Contract().methods.getPlayers().call();
         this.isInTheGame = this.players.indexOf(this.accounts[0]);
-        if (this.isInTheGame !== -1) {
+        if (this.isInTheGame !== -1 || this.lockGate) {
           this.disablePlay = true;
         }
         this.web3.instance.eth.getBalance(this.web3.Contract().options.address).then(value => {

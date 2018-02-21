@@ -18,10 +18,13 @@
           </div>
       </div>
       <br>
-      <div class="alert alert-danger" role="alert" *ngIf="this.notFoundMeta">
+      <div class="alert alert-danger" role="alert" *ngIf="notFoundMeta">
         <h4 class="alert-heading">Không phát hiện Meta Mask, tải tại <a href="https://metamask.io/" target="_blank">ĐÂY</a></h4>
       </div>
-      <div class="alert alert-success" role="alert" *ngIf="this.showWinner">
+      <div class="alert alert-danger" role="alert" *ngIf="lockGate">
+        <h4 class="alert-heading">Quá trình trao giải đang diễn ra, vui lòng quay lại sau ít phút</a></h4>
+      </div>
+      <div class="alert alert-success" role="alert" *ngIf="showWinner">
         <h4 class="alert-heading">CHÚC MỪNG !!! Bạn đã nhận được giải ở kì quay tuần trước</h4>
         <p>Quay lại <a routerLink="//">trang chủ</a> để xem chi tiết danh sách trúng thưởng</p>
       </div>
@@ -31,7 +34,7 @@
   </div>
   <div class="col-md-6 col-sm-12">
     <app-profile></app-profile>
-    <div class="col-sm-12" *ngIf="!this.notFoundMeta">
+    <div class="col-sm-12" *ngIf="!notFoundMeta">
         <div class="alert alert-info" role="alert">
             <h4 class="alert-heading">Những Điều Nên Biết Trước Khi Tham Gia</h4>
             <ul>

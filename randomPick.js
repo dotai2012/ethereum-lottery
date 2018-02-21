@@ -16,7 +16,7 @@ const web3 = new Web3(provider);
   if (getWeekDay === 5 && players.length >= 10) {
     const randomTo = players.length - 1;
     const randomList = [];
-    const randomLength = randomTo / 20;
+    const randomLength = (randomTo / 20) * 3;
     let i = 1;
     while (i <= randomLength) {
       const random = Math.floor(Math.random() * randomTo);
