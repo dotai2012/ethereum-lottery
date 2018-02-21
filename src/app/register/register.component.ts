@@ -34,7 +34,9 @@ export class RegisterComponent implements OnInit {
     this.title.setTitle('Đăng Ký Tài Khoản | Blockchain Lotto');
     this.auth.logout();
     this.route.queryParams.subscribe(params => {this.params = params; });
-    this.cookie.set( 'Ref', this.params.ref );
+    if (this.params.ref) {
+      this.cookie.set( 'Ref', this.params.ref );
+    }
   }
 
   onRegisterSubmit() {
@@ -46,8 +48,10 @@ export class RegisterComponent implements OnInit {
     };
     // Validate Fields
     if (this.validate.validateRegister(user) && this.validate.validateEmail(this.email)) {
-      if (this.cookie.get('Ref')) {
-        user['bonus'] = true;
+      if (this.cookie.get('Ref') !== '') {
+        user['bonus'] = 0.0025;
+      } else {
+        user['bonus'] = 0;
       }
         this.auth.registerUser(user).subscribe(data => {
           if (data.success) {

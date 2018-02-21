@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const userSchema = mongoose.Schema({
   manager: {
     type: Boolean,
+    required: true,
   },
   name: {
     type: String,
@@ -18,14 +19,20 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  address: {
+  passwordResetToken: {
     type: String,
   },
+  address: {
+    type: String,
+    required: true,
+  },
   bonus: {
-    type: Boolean,
+    type: Number,
+    required: true,
   },
   withdraw: {
     type: Boolean,
+    required: true,
   },
   ref: {
     type: Array,

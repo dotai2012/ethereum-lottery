@@ -7,7 +7,6 @@ function _window(): any {
 
 @Injectable()
 export class WindowService {
-  web3;
   get nativeWindow(): any {
      return _window();
   }

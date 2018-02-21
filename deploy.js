@@ -11,9 +11,9 @@ const web3 = new Web3(provider);
   const result = await new web3.eth.Contract(JSON.parse(abi))
     .deploy({ data: bytecode })
     .send({ from: accounts[0], gas: 1000000 });
-  // Lost provider bug, temporary fix
+  // Lost provider, temporary fix
   result.setProvider(web3.currentProvider);
-  // Lost provider bug, temporary fix
+  // Lost provider, temporary fix
   console.log('Contract deployed to', result.options.address);
 })();
 

@@ -1,3 +1,4 @@
+import { WindowService } from './../../window.service';
 import { AuthService } from './../../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../data.service';
@@ -11,20 +12,26 @@ import { Title } from '@angular/platform-browser';
 })
 export class AffiliateComponent implements OnInit {
   userProfile;
-  linkRef: String;
+  // tslint:disable-next-line:max-line-length
+  linkRef: String = `${this.windowRef.nativeWindow.location.protocol}//${this.windowRef.nativeWindow.location.hostname}/register?ref=${JSON.parse(localStorage.getItem('user')).id}`;
   totalRef: Number;
   email: String;
   withdraw: Boolean;
   withdrawText: String;
   address: String;
   refList: String;
+  bonus;
 
   disabledReq1: Boolean = true;
   disabledReq2: Boolean = false;
 
   isSent: Boolean = false;
   balance: Number;
-  constructor(private data: DataService, private auth: AuthService, private modal: NgbModal, private title: Title) { }
+  constructor(private data: DataService,
+    private auth: AuthService,
+    private modal: NgbModal,
+    private title: Title,
+    private windowRef: WindowService) { }
 
   ngOnInit() {
     this.title.setTitle('Giới Thiệu Bạn Bè | Blockchain Lotto');
@@ -32,7 +39,8 @@ export class AffiliateComponent implements OnInit {
       this.userProfile = value.user;
       this.email = this.userProfile.email;
       this.withdraw = this.userProfile.withdraw;
-      this.balance = this.userProfile.ref.length * 0.0035;
+      this.bonus = this.userProfile.bonus;
+      this.balance = this.userProfile.ref.length * 0.0035 + this.bonus;
       this.address = this.userProfile.address;
       this.totalRef = this.userProfile.totalRef;
       this.refList = this.userProfile.ref.slice(-5);
@@ -42,7 +50,6 @@ export class AffiliateComponent implements OnInit {
         this.withdrawText = 'Pending';
       }
     });
-    this.linkRef = this.data.getLinkRef();
   }
 
   open(content) {
@@ -54,5 +61,4 @@ export class AffiliateComponent implements OnInit {
     this.isSent = true;
     this.disabledReq2 = true;
   }
-
 }

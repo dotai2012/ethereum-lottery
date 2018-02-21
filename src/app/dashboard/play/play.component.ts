@@ -17,6 +17,9 @@ export class PlayComponent implements OnInit {
   accounts = [];
   players = [];
   totalPrize;
+  lastWinner;
+  lastConsolationPrize;
+  showWinner: Boolean = false;
 
   constructor(
     private data: DataService,
@@ -27,10 +30,14 @@ export class PlayComponent implements OnInit {
   async ngOnInit() {
     this.title.setTitle('Chương Trình Xổ Số | Blockchain Lotto');
       try {
+        this.lastWinner = await this.web3.Contract().methods.lastWinner().call();
+        this.lastConsolationPrize = await this.web3.Contract().methods.getLastConsolationPrize().call();
         this.accounts = await this.web3.instance.eth.getAccounts();
+        if (this.lastConsolationPrize.indexOf(this.accounts[0]) !== -1 || this.accounts[0] === this.lastWinner) {
+          this.showWinner = true;
+        }
         this.players = await this.web3.Contract().methods.getPlayers().call();
         this.isInTheGame = this.players.indexOf(this.accounts[0]);
-        console.log(this.isInTheGame);
         if (this.isInTheGame !== -1) {
           this.disablePlay = true;
         }
@@ -53,7 +60,7 @@ export class PlayComponent implements OnInit {
           value: this.web3.instance.utils.toWei('0.05', 'ether'),
         }).on('transactionHash', (hash) => {
           this.data.pushRefList({_id: this.cookie.get('Ref'), ref: JSON.parse(localStorage.getItem('user')).email, hash});
-      });
+        });
       } catch (error) {
         console.log('Rejected');
       }

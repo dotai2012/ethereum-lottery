@@ -21,6 +21,10 @@
       <div class="alert alert-danger" role="alert" *ngIf="this.notFoundMeta">
         <h4 class="alert-heading">Không phát hiện Meta Mask, tải tại <a href="https://metamask.io/" target="_blank">ĐÂY</a></h4>
       </div>
+      <div class="alert alert-success" role="alert" *ngIf="this.showWinner">
+        <h4 class="alert-heading">CHÚC MỪNG !!! Bạn đã nhận được giải ở kì quay tuần trước</h4>
+        <p>Quay lại <a routerLink="//">trang chủ</a> để xem chi tiết danh sách trúng thưởng</p>
+      </div>
     <div class="lucky-outer">
         <button [attr.disabled]="disablePlay ? '' : null" type="button" class="btn btn-primary lucky-btn" (click)="this.onPlay()">Thử Vận May</button>
     </div>
@@ -31,13 +35,13 @@
         <div class="alert alert-info" role="alert">
             <h4 class="alert-heading">Những Điều Nên Biết Trước Khi Tham Gia</h4>
             <ul>
-              <li>Chương trình sẽ diễn ra vào chủ nhật hằng tuần ở giờ bất kì*</li>
+              <li>Chương trình sẽ diễn ra vào cuối tuần ở giờ bất kì *</li>
               <li>Bạn chỉ được tham gia 1 lần mỗi tuần (nút tham gia sẽ tự động khoá)</li>
               <li>Bạn cần cài đặt Metamask để tham gia, tải tại <a href="https://metamask.io/" target="_blank">ĐÂY</a></li>
               <li>Danh sách người trúng giải đặc biệt và giải ản ủi có thể xem ở trang chủ</li>
             </ul>
             <hr>
-            <p>* Do vấn đề bảo mật</p>
+            <p>* Do vấn đề bảo mât</p>
             <p class="mb-0">Nếu chưa rõ điều gì, bạn có thể email, chúng tôi sẽ cố gắng hồi âm nhanh nhất có thể</p>
           </div>
     </div>

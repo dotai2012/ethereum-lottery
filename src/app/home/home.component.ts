@@ -1,3 +1,4 @@
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit, AfterViewInit  } from '@angular/core';
 import { Style, Params, Width, Height } from '../particles';
 import * as Chart from 'chart.js';
@@ -20,12 +21,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
   lastConsolationPrize;
   canvas: any;
   ctx: any;
-  constructor(private web3: Web3Service ) { }
+  constructor(private web3: Web3Service, private modal: NgbModal ) { }
 
   async ngOnInit() {
     try {
       this.lastWinner = await this.web3.Contract().methods.lastWinner().call();
-      this.lastConsolationPrize = await this.web3.Contract().methods.lastConsolationPrize().call();
+      this.lastConsolationPrize = await this.web3.Contract().methods.getLastConsolationPrize().call();
+      if (this.lastConsolationPrize.length !== 0) {
+        this.showPrizeList = true;
+      }
       const balance = await this.web3.instance.eth.getBalance(this.web3.Contract().options.address);
       this.totalPrize = await this.web3.instance.utils.fromWei(balance, 'ether');
       if (this.totalPrize >= 1) {
@@ -52,7 +56,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }],
         labels: [
           'Giai Dac Biet',
-          'Giai An Ui',
+          'Giai Khuyến Khích',
           'Marketing',
           'Nha Phat Trien',
         ],
@@ -62,5 +66,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       },
     };
     const myChart = new Chart(this.ctx, config);
+  }
+  open(content) {
+    this.modal.open(content).result;
   }
 }

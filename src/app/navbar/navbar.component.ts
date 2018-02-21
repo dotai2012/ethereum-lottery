@@ -1,3 +1,4 @@
+import { ValidateService } from './../validate.service';
 import { AuthService } from '../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,15 +10,11 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   isDashboard: Boolean = false;
-  constructor(private router: Router, private auth: AuthService) { }
+  constructor(private router: Router, private auth: AuthService, private validate: ValidateService) { }
 
   ngOnInit() {
-    if (this.router.url !== '/') {
-      if (this.router.url !== '/referal') {
-        if (this.router.url !== '/#about') {
-          this.isDashboard = true;
-        }
-      }
+    if (this.validate.checkIsDashboard(this.router.url)) {
+      this.isDashboard = true;
     }
   }
   onLogout() {
