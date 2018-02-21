@@ -6,6 +6,7 @@ contract Lottery {
     address public lastWinner;
     address[] public lastConsolationPrize;
     uint[] consolationPrizeIndexes;
+    bool lockGate = false;
     
     function Lottery() public {
         manager = msg.sender;
@@ -37,6 +38,7 @@ contract Lottery {
         return compareByte(_a, _b) == 0;
     }
     function enter(string message) public payable {
+        require(lockGate == false);
         require(msg.value == .05 ether && equal(message, "lotto") == true);
         players.push(msg.sender);
     }
@@ -44,9 +46,10 @@ contract Lottery {
         return uint(keccak256(block.difficulty, now, players));
     }
     function pickWinner() public restricted {
+        lockGate = true;
         uint indexWinner = random() % players.length;
-        uint authorPrize = this.balance / 100 * 15;
-        uint winnerPrize = this.balance / 100 * 70;
+        uint authorPrize = this.balance / 100 * 15; // 12% for marketing 3% for developers
+        uint winnerPrize = this.balance / 100 * 50;
 
         lastWinner = players[indexWinner];
         players[indexWinner] = players[players.length - 1];
@@ -71,6 +74,7 @@ contract Lottery {
             players[consolationPrizeIndex].transfer(eachConsolationPrize);
             lastConsolationPrize.push(players[consolationPrizeIndex]);
         }
+        lockGate = false;
         consolationPrizeIndexes = new uint[](0);
         players = new address[](0);
     }

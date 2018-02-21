@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       }
       const balance = await this.web3.instance.eth.getBalance(this.web3.Contract().options.address);
       this.totalPrize = await this.web3.instance.utils.fromWei(balance, 'ether');
-      if (this.totalPrize >= 1) {
+      if (this.totalPrize >= 2) {
         this.showPrize = true;
       }
     } catch (error) {
