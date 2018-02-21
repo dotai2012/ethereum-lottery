@@ -47,7 +47,7 @@ export class PlayComponent implements OnInit {
           this.totalPrize =  this.web3.instance.utils.fromWei(value, 'ether');
         });
       } catch (error) {
-        this.notFoundMeta = true;
+        console.log(error);
       }
   }
   getDate() {

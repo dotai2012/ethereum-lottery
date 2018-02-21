@@ -45,6 +45,7 @@ export class AuthService {
       return tokenNotExpired('id_token');
   }
   checkAdmin() {
+    console.log(this.user.manager);
     return this.user.manager;
   }
   logout() {
