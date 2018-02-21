@@ -56,6 +56,7 @@ router.post('/authenticate', (req, res) => {
             id: userFound._id,
             name: userFound.name,
             email: userFound.email,
+            manager: userFound.manager,
           },
         });
       } else {

@@ -45,9 +45,7 @@ export class AuthService {
       return tokenNotExpired('id_token');
   }
   checkAdmin() {
-    return this.getProfile().subscribe(value => {
-      return value.user.manager;
-    });
+    return this.user.manager;
   }
   logout() {
     this.authToken = null;
