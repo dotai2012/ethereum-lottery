@@ -28,7 +28,7 @@
         <h4 class="alert-heading">CHÚC MỪNG !!! Bạn đã nhận được giải ở kì quay tuần trước</h4>
         <p>Quay lại <a routerLink="//">trang chủ</a> để xem chi tiết danh sách trúng thưởng</p>
       </div>
-    <div class="lucky-outer">
+    <div class="lucky-outer" *ngIf="!notFoundMeta">
         <button [attr.disabled]="disablePlay ? '' : null" type="button" class="btn btn-primary lucky-btn" (click)="this.onPlay()">Thử Vận May</button>
     </div>
   </div>
