@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     try {
       this.lastWinner = await this.web3.Contract().methods.lastWinner().call();
       this.lastConsolationPrize = await this.web3.Contract().methods.getLastConsolationPrize().call();
-      if (this.lastWinner || this.lastConsolationPrize.length !== 0) {
+      if (this.lastWinner !== '0x0000000000000000000000000000000000000000' || this.lastConsolationPrize.length !== 0) {
         this.showConsolationPrize = true;
       }
       const balance = await this.web3.instance.eth.getBalance(this.web3.Contract().options.address);

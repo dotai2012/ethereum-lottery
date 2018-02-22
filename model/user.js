@@ -67,7 +67,7 @@ module.exports.comparePass = (password, hash, callback) => {
     callback(null, isMatch);
   });
 };
-module.exports.finRefs = (ref, callback) => {
+module.exports.find = (ref, callback) => {
   const query = { ref };
   user.find(query, callback).exec();
 };

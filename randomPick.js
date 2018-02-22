@@ -15,7 +15,7 @@ const web3 = new Web3(provider);
     const accounts = await web3.eth.getAccounts();
     const lottery = await new web3.eth.Contract(JSON.parse(abi), contractAddr);
     const players = await lottery.methods.getPlayers().call();
-    if (getWeekDay === 3) {
+    if (getWeekDay === 6) {
       const randomTo = players.length - 1;
       const randomList = [];
       const randomLength = (randomTo / 20) * 3;

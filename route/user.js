@@ -72,7 +72,7 @@ router.get('/profile', passport.authenticate('jwt', { session: false }), (req, r
 
 router.post('/updateref', passport.authenticate('jwt', { session: false }), (req, res) => {
   const { _id, ref } = req.body;
-  User.finRefs(ref, (err, refFound) => {
+  User.find(ref, (err, refFound) => {
     const { length } = refFound;
     if (length === 0) {
       User.updateRef(_id, ref, (err, result) => {
