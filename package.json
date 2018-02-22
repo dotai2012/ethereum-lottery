@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node app.js",
+    "start": "npm run build && node app.js",
     "build": "ng build --prod",
     "firstrun": "node deploy.js && node create.manager.js && node app.js",
     "test": "ng test",
@@ -25,6 +25,7 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0",
     "angular-particle": "^1.0.4",
     "angular2-jwt": "^0.2.3",
+    "angulartics2": "^5.1.1",
     "bcrypt": "^1.0.3",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.1",

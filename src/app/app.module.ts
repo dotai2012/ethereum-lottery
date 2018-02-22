@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ParticlesModule } from 'angular-particle';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import { ValidateService } from './validate.service';
 import { AuthService } from './auth.service';
@@ -64,6 +66,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     ParticlesModule
