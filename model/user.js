@@ -36,9 +36,11 @@ const userSchema = mongoose.Schema({
   },
   ref: {
     type: Array,
+    required: true,
   },
   totalRef: {
     type: Number,
+    required: true,
   },
 });
 

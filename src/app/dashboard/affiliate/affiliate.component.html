@@ -28,7 +28,7 @@
               </div>
               <div class="col-sm-5">
                   <button type="button" [attr.disabled]="disabledReq1 ? '' : null" class="btn btn-success" (click)="open(content)">{{ withdrawText }}</button>
-                  <label>Số dư: {{balance}} ETH || Tổng số người đã mời: {{totalRef}}</label>
+                  <label>Số dư: {{balance | number : '1.2-4' }} ETH || Tổng số người đã mời: {{totalRef}}</label>
                 </div>
             </div>
           </form>

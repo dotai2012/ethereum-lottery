@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   particleHeight = Height;
   totalPrize;
   showPrize: Boolean = false;
-  showPrizeList: Boolean = false;
+  showConsolationPrize: Boolean = false;
   lastWinner;
   lastConsolationPrize;
   canvas: any;
@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     try {
       this.lastWinner = await this.web3.Contract().methods.lastWinner().call();
       this.lastConsolationPrize = await this.web3.Contract().methods.getLastConsolationPrize().call();
-      if (this.lastConsolationPrize.length !== 0) {
-        this.showPrizeList = true;
+      if (this.lastWinner || this.lastConsolationPrize.length !== 0) {
+        this.showConsolationPrize = true;
       }
       const balance = await this.web3.instance.eth.getBalance(this.web3.Contract().options.address);
       this.totalPrize = await this.web3.instance.utils.fromWei(balance, 'ether');
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       data: {
         datasets: [{
           data: [
-            70, 15, 12, 3,
+            50, 35, 12, 3,
           ],
           backgroundColor: [
             '#e74c3c', '#2980b9', '#e67e22', '#9b59b6',

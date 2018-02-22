@@ -13,7 +13,7 @@ export class IsAdminService implements CanActivate {
       if (this.auth.checkAdmin()) {
         return true;
       } else {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/']);
         return false;
       }
     }

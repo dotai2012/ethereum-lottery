@@ -10,8 +10,9 @@
     <div class="modal-body">
       <h6>Giải Đặc Biệt:</h6>
       <a href="https://etherscan.io/address/{{ lastWinner }}">{{ lastWinner }}</a>
+      <hr>
       <h6>Giải Khuyến Khích:</h6>
-      <table class="table">
+      <table class="table" height="400">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Address</th>
@@ -44,7 +45,7 @@
       <div class="col-lg-8 mx-auto">
         <a class="btn btn-primary btn-xl js-scroll-trigger" routerLink="/login">Tham Gia Ngay</a>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Tìm Hiểu Thêm</a>
-        <button *ngIf="showPrizeList" class="btn btn-primary btn-xl" (click)="open(content)">Danh Sách Trúng Thưởng</button>
+        <button *ngIf="showConsolationPrize" class="btn btn-primary btn-xl" (click)="open(content)">Danh Sách Trúng Thưởng</button>
       </div>
     </div>
   </div>

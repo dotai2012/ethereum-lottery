@@ -29,6 +29,6 @@ export class AdminComponent implements OnInit {
       to: address,
       value: this.web3.instance.utils.toWei(amount.toString(), 'ether'),
     });
-    this.data.payComplete(email);
+    this.data.payComplete(email).subscribe();
   }
 }

@@ -48,6 +48,7 @@ export class PlayComponent implements OnInit {
         });
       } catch (error) {
         console.log(error);
+        this.notFoundMeta = true;
       }
   }
   getDate() {
@@ -60,8 +61,9 @@ export class PlayComponent implements OnInit {
         const play = this.web3.Contract().methods.enter('lotto').send({
           from: this.accounts[0],
           value: this.web3.instance.utils.toWei('0.05', 'ether'),
-        }).on('transactionHash', (hash) => {
-          this.data.pushRefList({_id: this.cookie.get('Ref'), ref: JSON.parse(localStorage.getItem('user')).email, hash});
+        }).on('transactionHash', () => {
+          this.data.pushRefList({_id: this.cookie.get('Ref'), ref: JSON.parse(localStorage.getItem('user')).email}).subscribe();
+          this.cookie.delete('Ref');
         });
       } catch (error) {
         console.log('Rejected');

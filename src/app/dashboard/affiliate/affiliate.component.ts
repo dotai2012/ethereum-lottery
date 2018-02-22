@@ -14,10 +14,10 @@ export class AffiliateComponent implements OnInit {
   userProfile;
   // tslint:disable-next-line:max-line-length
   linkRef: String = `${this.windowRef.nativeWindow.location.protocol}//${this.windowRef.nativeWindow.location.hostname}/register?ref=${JSON.parse(localStorage.getItem('user')).id}`;
-  totalRef: Number;
+  totalRef: Number = 0;
   email: String;
   withdraw: Boolean;
-  withdrawText: String;
+  withdrawText: String = 'Rút Tiền';
   address: String;
   refList: String;
   bonus;
@@ -56,8 +56,8 @@ export class AffiliateComponent implements OnInit {
     this.modal.open(content);
   }
   onWithdrawalRequest() {
-    this.data.updateAddress({email: this.email, address: this.address});
-    this.data.withdrawalRequest({email: this.email, withdraw: true});
+    this.data.updateAddress({email: this.email, address: this.address}).subscribe();
+    this.data.withdrawalRequest({email: this.email, withdraw: true}).subscribe();
     this.isSent = true;
     this.disabledReq2 = true;
   }

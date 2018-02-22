@@ -25,7 +25,6 @@ export class ProfileComponent implements OnInit {
     });
   }
   onChangePassword() {
-    console.log(this.password, this.password === this.confirmPassword);
     if (this.password !== this.confirmPassword) {
       this.disabled = true;
     } else {
@@ -34,12 +33,12 @@ export class ProfileComponent implements OnInit {
   }
   onUpdateName() {
     this.isUpdated = true;
-    this.data.updateName({email: this.email, name: this.name});
+    this.data.updateName({email: this.email, name: this.name}).subscribe();
   }
   onUpdatePassword() {
     if (this.password === this.confirmPassword) {
       this.isUpdated = true;
-      this.data.updatePassword({email: this.email, password: this.password});
+      this.data.updatePassword({email: this.email, password: this.password}).subscribe();
     }
   }
 }

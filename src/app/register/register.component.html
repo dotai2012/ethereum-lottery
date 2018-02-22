@@ -8,12 +8,12 @@
         <ngb-alert [dismissible]="false" *ngIf="showAlert" type="danger">Vui Lòng Kiểm Tra Lại Thông Tin Đăng Ký</ngb-alert>
         <div class="form-group">
           <div class="form-row">
-              <label for="exampleInputName">Name</label>
+              <label for="exampleInputName">Tên của bạn</label>
               <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter your name" [(ngModel)]="name" name="name">
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+          <label for="exampleInputEmail1">Địa chỉ email</label>
           <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="email" name="email">
         </div>
         <div class="form-group">
@@ -23,16 +23,16 @@
               <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password" [(ngModel)]="password" name="password">
             </div>
             <div class="col-md-6">
-              <label for="exampleConfirmPassword">Confirm password</label>
+              <label for="exampleConfirmPassword">Xác nhận password</label>
               <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password" [(ngModel)]="confirm" name="confirm">
             </div>
           </div>
         </div>
-        <a class="btn btn-primary btn-block" (click)="onRegisterSubmit()">Register</a>
+        <a class="btn btn-primary btn-block" (click)="onRegisterSubmit()">Đăng Ký</a>
       </form>
       <div class="text-center">
-        <a class="d-block small mt-3" routerLink="/login">Login Page</a>
-        <a class="d-block small" routerLink="/forgotpassword">Forgot Password?</a>
+        <a class="d-block small mt-3" routerLink="/login">Đăng Nhập</a>
+        <a class="d-block small" routerLink="/forgotpassword">Quên Mật Khẩu?</a>
       </div>
     </div>
   </div>
