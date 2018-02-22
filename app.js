@@ -18,7 +18,7 @@ mongoose.connection.on('error', (error) => {
 });
 
 const app = express();
-const port = 3000;
+const port = process.env.port || 80;
 
 app.use(compression({ level: 9 }));
 app.use(cors());
