@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build && node app.js",
+    "start": "node app.js",
     "build": "ng build --prod",
     "firstrun": "node deploy.js && node create.manager.js && node app.js",
     "test": "ng test",
