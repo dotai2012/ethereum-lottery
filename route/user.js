@@ -5,12 +5,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../model/user');
 const database = require('../config/database');
 const passport = require('passport');
-const Web3 = require('web3');
-const HDWalletProvider = require('truffle-hdwallet-provider');
-const { mnemonic, network } = require('../config/provider');
-
-const provider = new HDWalletProvider(mnemonic, network);
-const web3 = new Web3(provider);
 
 router.post('/register', (req, res) => {
   const {

@@ -12,9 +12,11 @@ const web3 = new Web3(provider);
   try {
     const date = new Date();
     const getWeekDay = date.getDay();
-    if (getWeekDay === 6) {
+    const lottery = await new web3.eth.Contract(JSON.parse(abi), contractAddr);
+    const prize = await web3.eth.getBalance(lottery.options.address);
+    // If prize > 2 ETH and is Sat then execute randomPick
+    if (getWeekDay === 6 && prize >= 2000000000000000000) {
       const accounts = await web3.eth.getAccounts();
-      const lottery = await new web3.eth.Contract(JSON.parse(abi), contractAddr);
       const players = await lottery.methods.getPlayers().call();
       const randomTo = players.length - 1;
       const randomList = [];
