@@ -22,7 +22,7 @@
                     <tbody>
                       <tr role="row" *ngFor="let item of withdrawalRequestList">
                         <td>{{ item.email }}</td>
-                        <td>{{ item.ref.length * 0.0035 + item.bonus }}</td>
+                        <td>{{ item.ref.length * 0.000035 + item.bonus }}</td>
                         <td><button type="button" class="btn btn-success" (click)="onPay(item.email, item.ref.length * 0.0035 + item.bonus, item.address)">Thanh Toán</button></td>
                       </tr>
                     </tbody>

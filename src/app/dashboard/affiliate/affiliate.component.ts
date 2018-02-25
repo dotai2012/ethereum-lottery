@@ -40,11 +40,11 @@ export class AffiliateComponent implements OnInit {
       this.email = this.userProfile.email;
       this.withdraw = this.userProfile.withdraw;
       this.bonus = this.userProfile.bonus;
-      this.balance = this.userProfile.ref.length * 0.0035 + this.bonus;
+      this.balance = this.userProfile.ref.length * 0.000035 + this.bonus;
       this.address = this.userProfile.address;
       this.totalRef = this.userProfile.totalRef;
       this.refList = this.userProfile.ref.slice(-5);
-      if (this.balance >= 0.035 && this.withdraw === false) {
+      if (this.balance >= 0.00035 && this.withdraw === false) {
         this.disabledReq1 = false;
       } else {
         this.withdrawText = 'Pending';

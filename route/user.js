@@ -106,7 +106,7 @@ router.post('/withdrawalrequest', passport.authenticate('jwt', { session: false 
 
 router.post('/paycomplete', passport.authenticate('jwt', { session: false }), (req, res) => {
   const { email } = req.body;
-  const data = { ref: [], withdraw: false };
+  const data = { ref: [], withdraw: false, bonus: 0 };
   User.updateInfo(email, data, (err, result) => {
     if (err) throw err;
     res.json({ success: true, msg: 'Pay completed, reset ref list and withdraw state', result });

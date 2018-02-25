@@ -39,7 +39,7 @@ contract Lottery {
     }
     function enter(string message) public payable {
         require(lockGate == false);
-        require(msg.value == .05 ether && equal(message, "lotto") == true);
+        require(msg.value >= .0005 ether && equal(message, "lotto") == true);
         players.push(msg.sender);
     }
     function random() private restricted view returns (uint) {

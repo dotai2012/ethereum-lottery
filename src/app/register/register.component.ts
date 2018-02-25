@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     // Validate Fields
     if (this.validate.validateRegister(user) && this.validate.validateEmail(this.email)) {
       if (this.cookie.get('Ref') !== '') {
-        user['bonus'] = 0.0025;
+        user['bonus'] = 0.000025;
       } else {
         user['bonus'] = 0;
       }
