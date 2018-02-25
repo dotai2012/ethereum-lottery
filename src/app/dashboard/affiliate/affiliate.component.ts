@@ -44,7 +44,7 @@ export class AffiliateComponent implements OnInit {
       this.address = this.userProfile.address;
       this.totalRef = this.userProfile.totalRef;
       this.refList = this.userProfile.ref.slice(-5);
-      if (this.balance >= 0.00035 && this.withdraw === false) {
+      if (this.balance >= 0.0007 && this.withdraw === false) {
         this.disabledReq1 = false;
       } else {
         this.withdrawText = 'Pending';
