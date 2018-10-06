@@ -5,7 +5,7 @@ import { Http, Headers } from '@angular/http';
 
 @Injectable()
 export class DataService {
-  url: String = '';
+  url: String = 'http://localhost:3000/';
 
   constructor(private windowRef: WindowService, private http: Http, private auth: AuthService) { }
   authPostReq(url, data) {

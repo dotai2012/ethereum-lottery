@@ -1,2 +1,2 @@
-const provider = { mnemonic: 'effort blade victory quantum legal decrease fragile cupboard kiwi false marriage test', network: 'https://mainnet.infura.io/Y5BE2if4ninB3PjdsDJ1' };
+// const provider = { mnemonic: '' };
 module.exports = provider;

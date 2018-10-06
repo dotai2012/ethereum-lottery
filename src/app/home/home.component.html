@@ -2,16 +2,16 @@
 <particles [params]="particleParams" [style]="particleStyle" [width]="particleWidth" [height]="particleHeight"></particles>
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
-      <h4 class="modal-title">Danh Sách Trúng Thưởng</h4>
+      <h4 class="modal-title">Winning List</h4>
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <h6>Giải Đặc Biệt:</h6>
+      <h6>Special Prize:</h6>
       <a href="https://etherscan.io/address/{{ lastWinner }}">{{ lastWinner }}</a>
       <hr>
-      <h6>Giải Khuyến Khích:</h6>
+      <h6>Consolation Prizes:</h6>
       <table class="table" height="400">
         <thead class="thead-dark">
           <tr>
@@ -35,10 +35,10 @@
     <div class="row">
       <div class="col-md-10 mx-auto">
         <h1 class="text-uppercase">
-          <strong>Xổ Số Trên Nền Tảng Blockchain</strong>
+          <strong>Lottery based on Blockchain</strong>
         </h1>
         <h3 class="text-uppercase" *ngIf="showPrize">
-          <strong>Tổng giải thưởng hiện tại: {{ totalPrize }} ETH</strong>
+          <strong>Total prize: {{ totalPrize }} ETH</strong>
         </h3>
         <hr>
       </div>
@@ -55,32 +55,32 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 mx-auto text-center">
-        <h2 class="section-heading text-white">Giúp Mọi Thứ Trở Nên Minh Bạch Và Rõ Ràng</h2>
+        <h2 class="section-heading text-white">Help Everything Should Be Bright and Clear</h2>
         <hr class="light my-4">
-        <p class="text-faded mb-4">Hiện nay, đa số các chương trình xổ số đều hoạt động theo kiểu truyền thống, tức là người dùng không thể biết CHÍNH XÁC tiền thưởng đó có bao nhiêu và được dùng như thế nào. Tất cả thông tin đều phải thông qua ban tổ chức, do đó khó có thể tránh khỏi trường hợp gian lận</p>
-        <p class="text-faded mb-4">Blockchain Lotto đã giải quyết phần nào vấn đề này bằng cách áp dụng công nghệ phân quyền và Smart Contract. Đảm bảo quyền lợi tối đa cho người dùng</p>
+        <p class="text-faded mb-4">Currently, most lottery programs work in the traditional way: users can not know exactly how much prizes and how they are used. All information is from the organizers, so it is difficult to prevent embezzlement</p>
+        <p class="text-faded mb-4">Blockchain Lotto solved this problem by applying decentralized technology and Smart Contract. Ensure maximum benefit for users</p>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-4 col-md-6 col-md-12 text-center">
         <div class="service-box mt-5 mx-auto">
           <i class="fa fa-4x fa-ticket mb-3 sr-icons"></i>
-          <h3 class="mb-3 mb-3-c">Bước 1</h3>
-          <p class="mb-0 mb-0-c">Người chơi bỏ 1 khoản tiền gọi là phí tham gia (0.0005 ETH). Số tiền này sẽ giữ ở Smart Contract. Không 1 ai có thể can thiệp vào số tiền này, kể cả ban tổ chức. Bạn có thể xem định nghĩa của nó tại <a class="wiki-a" href="https://vi.wikipedia.org/wiki/Ethereum#H%E1%BB%A3p_%C4%91%E1%BB%93ng_th%C3%B4ng_minh">ĐÂY</a></p>
+          <h3 class="mb-3 mb-3-c">Step 1</h3>
+          <p class="mb-0 mb-0-c">The player pays a deposit as participation fee (0.0005 ETH). This amount will be kept at Smart Contract. No one can interfere with this amount, including the organizers. You can see its definition at <a class="wiki-a" href="https://vi.wikipedia.org/wiki/Ethereum#H%E1%BB%A3p_%C4%91%E1%BB%93ng_th%C3%B4ng_minh">Here</a></p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-md-12 text-center">
         <div class="service-box mt-5 mx-auto">
           <i class="fa fa-4x fa-random mb-3 sr-icons"></i>
-          <h3 class="mb-3 mb-3-c">Bước 2</h3>
-          <p class="mb-0 mb-0-c">Smart Contract sẽ bốc ngẫu nhiên Giải Đặc Biệt và Giải Khuyến Khích (chi tiết giải thưởng xem ở dưới)</p>
+          <h3 class="mb-3 mb-3-c">Step 2</h3>
+          <p class="mb-0 mb-0-c">Smart Contract will randomly award prizes (details of awards see below)</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-md-12 text-center">
         <div class="service-box mt-5 mx-auto">
           <i class="fa fa-4x fa-trophy mb-3 sr-icons"></i>
-          <h3 class="mb-3 mb-3-c">Bước 3</h3>
-          <p class="mb-0 mb-0-c">Người chơi nhận giải 1 cách hoàn toàn ẩn danh, đảm bảo quyền riêng tư của người đó</p>
+          <h3 class="mb-3 mb-3-c">Step 3</h3>
+          <p class="mb-0 mb-0-c">The player receives the prize anonymously, ensuring his / her privacy</p>
         </div>
       </div>
     </div>
@@ -91,14 +91,14 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-sm-12 mx-auto text-center">
-        <h2 class="section-heading text-white">Quy Chế Giải Thưởng</h2>
+        <h2 class="section-heading text-white">Award:</h2>
         <hr class="light my-4">
-        <p class="text-faded mb-4">Chương trình sẽ bắt đầu vào chủ nhật hằng tuần (với điều  kiện giải thưởng lớn hơn 0.05 ETH)</p>
+        <p class="text-faded mb-4">The program will start weekly (if the prize is greater than 0.05 ETH)</p>
         <ul class="prize-list">
-          <li>50% Số tiền sẽ gửi cho người chiến thắng (ngẫu nhiên)</li>
-          <li>35% Số tiền sẽ gửi cho 15% số người người chơi (ngẫu nhiên)</li>
-          <li>12% Sẽ dùng cho mục đích quảng cáo và affiliate marketing</li>
-          <li>3% Dành cho nhà phát triển</li>
+          <li>50% of the prize will be sent to the winner (random)</li>
+          <li>35% of the prize will be sent to 15% of players (random)</li>
+          <li>12% will be used for advertising and affiliate marketing purposes</li>
+          <li>3% for developers</li>
         </ul>
       </div>
       <div class="col-md-4 col-sm-12">
@@ -112,7 +112,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
-        <h2 class="section-heading section-heading-c">Những Tính Năng Nổi Bật</h2>
+        <h2 class="section-heading section-heading-c">Outstanding Features</h2>
         <hr class="my-4">
       </div>
     </div>
@@ -122,29 +122,29 @@
       <div class="col-lg-3 col-md-6 col-md-12 text-center">
         <div class="service-box mt-5 mx-auto">
           <i class="fa fa-4x fa-user-secret text-primary mb-3 sr-icons"></i>
-          <h3 class="mb-3 mb-3-c">Ẩn Danh</h3>
-          <p class="mb-0 mb-0-c">Không giống như nhiều chương trình khác, người chiến thắng hoàn toàn được đảm bảo danh tính của mình</p>
+          <h3 class="mb-3 mb-3-c">Anonymous</h3>
+          <p class="mb-0 mb-0-c">Unlike many other programs, the winner is guaranteed complete anonymous</p>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-md-12 text-center">
         <div class="service-box mt-5 mx-auto">
           <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
-          <h3 class="mb-3 mb-3-c">Minh Bạch</h3>
-          <p class="mb-0 mb-0-c">Dựa trên công nghệ Smart Contract cũng như Blockchain. Số tiền thưởng sẽ được dùng đúng mục đích của nó, không ai có thể can thiệp</p>
+          <h3 class="mb-3 mb-3-c">Transparent</h3>
+          <p class="mb-0 mb-0-c">Based on Smart Contract technology as well as Blockchain. The bonus will be used for its intended purpose, no one can intervene</p>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-md-12 text-center">
         <div class="service-box mt-5 mx-auto">
           <i class="fa fa-4x fa-lock text-primary mb-3 sr-icons"></i>
-          <h3 class="mb-3 mb-3-c">An Toàn</h3>
-          <p class="mb-0 mb-0-c">Mọi tương tác với tài khoản Ethereum của bạn đều thông qua Metamask. Chúng tôi không lưu giữ private key của bạn</p>
+          <h3 class="mb-3 mb-3-c">Safe</h3>
+          <p class="mb-0 mb-0-c">Every interaction with your Ethereum account is through Metamask. We do not keep your private key</p>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-md-12 text-center">
         <div class="service-box mt-5 mx-auto">
           <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
           <h3 class="mb-3 mb-3-c">Made with Love</h3>
-          <p class="mb-0 mb-0-c">Vì lý do rủi ro, chúng tôi quyết định không ICO dự án này để đảm bảo an toàn tối đa cho người dùng. Mọi giao dịch đều thông qua Ethereum (ETH)</p>
+          <p class="mb-0 mb-0-c">For risky reasons, we decided not ICO this project to ensure maximum safety for the user. Every transaction is through Ethereum (ETH)</p>
         </div>
       </div>
     </div>
