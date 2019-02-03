@@ -10,7 +10,7 @@ import { Web3Service } from '../../web3.service';
 export class AdminComponent implements OnInit {
   withdrawalRequestList;
   accounts = [];
-  isBonus: Boolean;
+  isBonus: boolean;
   constructor(private data: DataService, private web3: Web3Service) { }
 
   async ngOnInit() {

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
-  url: String = 'http://localhost:3000/';
+  url = 'http://localhost:3000/';
   authToken: any;
   user: any;
 
@@ -14,9 +14,9 @@ export class AuthService {
   getProfile() {
    const headers = new Headers();
    this.loadToken();
-    headers.append('Authorization', this.authToken);
-    headers.append('Content-Type', 'application/json');
-    return this.http.get(`${this.url}user/profile`, {headers}).map(res => res.json());
+   headers.append('Authorization', this.authToken);
+   headers.append('Content-Type', 'application/json');
+   return this.http.get(`${this.url}user/profile`, {headers}).pipe(map(res => res.json()));
   }
 
   loadToken() {
@@ -28,12 +28,12 @@ export class AuthService {
   registerUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post(`${this.url}user/register`, user, {headers}).map(res => res.json());
+    return this.http.post(`${this.url}user/register`, user, {headers}).pipe(map(res => res.json()));
   }
   authenticateUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post(`${this.url}user/authenticate`, user, {headers}).map(res => res.json());
+    return this.http.post(`${this.url}user/authenticate`, user, {headers}).pipe(map(res => res.json()));
   }
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);

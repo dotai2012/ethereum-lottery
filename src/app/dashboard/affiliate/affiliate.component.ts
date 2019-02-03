@@ -13,20 +13,20 @@ import { Title } from '@angular/platform-browser';
 export class AffiliateComponent implements OnInit {
   userProfile;
   // tslint:disable-next-line:max-line-length
-  linkRef: String = `${this.windowRef.nativeWindow.location.protocol}//${this.windowRef.nativeWindow.location.hostname}/register?ref=${JSON.parse(localStorage.getItem('user')).id}`;
-  totalRef: Number = 0;
-  email: String;
-  withdraw: Boolean;
-  withdrawText: String = 'Rút Tiền';
-  address: String;
-  refList: String;
+  linkRef: string = `${this.windowRef.nativeWindow.location.protocol}//${this.windowRef.nativeWindow.location.hostname}/register?ref=${JSON.parse(localStorage.getItem('user')).id}`;
+  totalRef: number = 0;
+  email: string;
+  withdraw: boolean;
+  withdrawText: string = 'Rút Tiền';
+  address: string;
+  refList: string;
   bonus;
 
-  disabledReq1: Boolean = true;
-  disabledReq2: Boolean = false;
+  disabledReq1: boolean = true;
+  disabledReq2: boolean = false;
 
-  isSent: Boolean = false;
-  balance: Number;
+  isSent: boolean = false;
+  balance: number;
   constructor(private data: DataService,
     private auth: AuthService,
     private modal: NgbModal,

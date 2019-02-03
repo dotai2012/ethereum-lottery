@@ -13,11 +13,11 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  showAlert: Boolean = false;
-  name: String;
-  email: String;
-  password: String;
-  confirm: String;
+  showAlert: boolean = false;
+  name: string;
+  email: string;
+  password: string;
+  confirm: string;
   params;
 
   constructor(

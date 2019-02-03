@@ -10,9 +10,9 @@ import { Title } from '@angular/platform-browser';
 })
 export class LoginComponent implements OnInit {
 
-  email: String;
-  password: String;
-  showAlert: Boolean = false;
+  email: string;
+  password: string;
+  showAlert: boolean = false;
 
   constructor(
     private authService: AuthService,

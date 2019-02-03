@@ -2,18 +2,18 @@
 <br><br>
 <div class="container">
   <div class="card card-register mx-auto mt-5">
-    <div class="card-header">Đăng Ký Tài Khoản</div>
+    <div class="card-header">Sign Up Account</div>
     <div class="card-body">
       <form (submit)="onRegisterSubmit()" (keyup.enter)="onRegisterSubmit()" #tref>
-        <ngb-alert [dismissible]="false" *ngIf="showAlert" type="danger">Vui Lòng Kiểm Tra Lại Thông Tin Đăng Ký</ngb-alert>
+        <ngb-alert [dismissible]="false" *ngIf="showAlert" type="danger">Please check your cri</ngb-alert>
         <div class="form-group">
           <div class="form-row">
-              <label for="exampleInputName">Tên của bạn</label>
+              <label for="exampleInputName">Your full name</label>
               <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter your name" [(ngModel)]="name" name="name">
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">Địa chỉ email</label>
+          <label for="exampleInputEmail1">Email Address</label>
           <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="email" name="email">
         </div>
         <div class="form-group">
@@ -23,16 +23,16 @@
               <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password" [(ngModel)]="password" name="password">
             </div>
             <div class="col-md-6">
-              <label for="exampleConfirmPassword">Xác nhận password</label>
+              <label for="exampleConfirmPassword">Confirm password</label>
               <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password" [(ngModel)]="confirm" name="confirm">
             </div>
           </div>
         </div>
-        <a class="btn btn-primary btn-block" (click)="onRegisterSubmit()">Đăng Ký</a>
+        <a class="btn btn-primary btn-block" (click)="onRegisterSubmit()">Sign up</a>
       </form>
       <div class="text-center">
-        <a class="d-block small mt-3" routerLink="/login">Đăng Nhập</a>
-        <a class="d-block small" routerLink="/forgotpassword">Quên Mật Khẩu?</a>
+        <a class="d-block small mt-3" routerLink="/login">Log in</a>
+        <a class="d-block small" routerLink="/forgotpassword">Forgot password</a>
       </div>
     </div>
   </div>

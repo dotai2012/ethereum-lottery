@@ -2,10 +2,11 @@ import { AuthService } from './auth.service';
 import { WindowService } from './window.service';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class DataService {
-  url: String = 'http://localhost:3000/';
+  url = 'http://localhost:3000/';
 
   constructor(private windowRef: WindowService, private http: Http, private auth: AuthService) { }
   authPostReq(url, data) {
@@ -13,7 +14,7 @@ export class DataService {
     this.auth.loadToken();
     headers.append('Authorization', this.auth.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.post(url, data, {headers}).map(res => res.json());
+    return this.http.post(url, data, {headers}).pipe(map(res => res.json()));
   }
   updateName(data: Object) {
     return this.authPostReq(`${this.url}user/updatename`, data);

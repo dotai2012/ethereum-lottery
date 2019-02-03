@@ -1,8 +1,8 @@
 <br>
 <div class="col-sm-12">
-    <h4>Thông Tin Tài Khoản</h4>
+    <h4>Account information</h4>
     <div class="alert alert-success" role="alert" *ngIf="isUpdated">
-        Cập nhật thông tin thành công
+        Successfully updated
       </div>
     <form>
         <div class="form-group row">
@@ -11,7 +11,7 @@
               <input type="text" class="form-control" [(ngModel)]="name" name="name">
             </div>
             <div class="col-sm-4">
-                <button type="button" class="btn btn-success" (click)="onUpdateName()">Thay Đổi</button>
+                <button type="button" class="btn btn-success" (click)="onUpdateName()">Apply</button>
               </div>
           </div>
         <div class="form-group row">

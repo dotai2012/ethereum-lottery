@@ -3,6 +3,7 @@ import { Component, OnInit, AfterViewInit  } from '@angular/core';
 import { Style, Params, Width, Height } from '../particles';
 import * as Chart from 'chart.js';
 import { Web3Service } from '../web3.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -15,16 +16,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
   particleWidth = Width;
   particleHeight = Height;
   totalPrize;
-  showPrize: Boolean = false;
-  showConsolationPrize: Boolean = false;
+  showPrize = false;
+  showConsolationPrize = false;
   lastWinner;
   lastConsolationPrize;
   canvas: any;
   ctx: any;
-  constructor(private web3: Web3Service, private modal: NgbModal ) { }
+  constructor(private web3: Web3Service, private modal: NgbModal, private title: Title) { }
 
   async ngOnInit() {
     try {
+      this.title.setTitle('Blockchain Lotto');
       this.lastWinner = await this.web3.Contract().methods.lastWinner().call();
       this.lastConsolationPrize = await this.web3.Contract().methods.getLastConsolationPrize().call();
       if (this.lastWinner !== '0x0000000000000000000000000000000000000000' || this.lastConsolationPrize.length !== 0) {

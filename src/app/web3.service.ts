@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { WindowService } from './window.service';
 import { abi, adress } from './blockchain.interface';
 
-declare function require(name: String);
+declare function require(name: string);
 const Web3 = require('web3');
 
 @Injectable()

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isDashboard: Boolean = false;
+  isDashboard: boolean = false;
   constructor(private router: Router, private auth: AuthService, private validate: ValidateService) { }
 
   ngOnInit() {

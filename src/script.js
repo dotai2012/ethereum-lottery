@@ -65,33 +65,5 @@ $(document).ready(() => {
     }, 1000, 'easeInOutExpo');
     event.preventDefault();
   });
-
-  // Chartjs
-
-  // const ctx = document.getElementById('prizeRatio');
-  // const config = {
-  //   type: 'pie',
-  //   data: {
-  //     datasets: [{
-  //       data: [
-  //         70, 20, 5, 5,
-  //       ],
-  //       backgroundColor: [
-  //         '#e74c3c', '#2980b9', '#e67e22', '#9b59b6',
-  //       ],
-  //       label: 'Dataset 1',
-  //     }],
-  //     labels: [
-  //       'Nguoi Chien Thang',
-  //       'Giai An Ui',
-  //       'Marketing',
-  //       'Nha Phat Trien',
-  //     ],
-  //   },
-  //   options: {
-  //     responsive: true,
-  //   },
-  // };
-  // const myChart = new Chart(ctx, config);
 });
 

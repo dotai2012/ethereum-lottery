@@ -11,16 +11,16 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./play.component.css']
 })
 export class PlayComponent implements OnInit {
-  notFoundMeta: Boolean = false;
-  lockGate: Boolean = false;
+  notFoundMeta = false;
+  lockGate = false;
   isInTheGame;
-  disablePlay: Boolean = false;
+  disablePlay = false;
   accounts = [];
   players = [];
   totalPrize;
   lastWinner;
   lastConsolationPrize;
-  showWinner: Boolean = false;
+  showWinner = false;
 
   constructor(
     private data: DataService,
@@ -29,8 +29,8 @@ export class PlayComponent implements OnInit {
     private title: Title) { }
 
   async ngOnInit() {
-    this.title.setTitle('Chương Trình Xổ Số | Blockchain Lotto');
-      try {
+    this.title.setTitle('Blockchain Lotto');
+    try {
         this.lastWinner = await this.web3.Contract().methods.lastWinner().call();
         this.lastConsolationPrize = await this.web3.Contract().methods.getLastConsolationPrize().call();
         this.lockGate = await this.web3.Contract().methods.lockGate().call();

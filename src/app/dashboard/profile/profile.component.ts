@@ -9,12 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   userProfile;
-  name: String;
-  email: String;
-  password: String = 'Change password';
-  confirmPassword: String = 'Change password';
-  disabled: Boolean = true;
-  isUpdated: Boolean = false;
+  name: string;
+  email: string;
+  password = 'Change password';
+  confirmPassword = 'Change password';
+  disabled = true;
+  isUpdated = false;
   constructor(private data: DataService, private auth: AuthService) { }
 
   ngOnInit() {
