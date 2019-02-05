@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class DataService {
-  url = 'http://localhost:3000/';
+  url = '';
 
   constructor(private windowRef: WindowService, private http: Http, private auth: AuthService) { }
   authPostReq(url, data) {
@@ -16,10 +16,10 @@ export class DataService {
     headers.append('Content-Type', 'application/json');
     return this.http.post(url, data, {headers}).pipe(map(res => res.json()));
   }
-  updateName(data: Object) {
+  updateName(data: object) {
     return this.authPostReq(`${this.url}user/updatename`, data);
   }
-  updateAddress(data: Object) {
+  updateAddress(data: object) {
     return this.authPostReq(`${this.url}user/updateaddress`, data);
   }
   withdrawalRequest(data) {
@@ -31,10 +31,10 @@ export class DataService {
   payComplete(email) {
     return this.authPostReq(`${this.url}user/paycomplete`, {email});
   }
-  updatePassword(data: Object) {
+  updatePassword(data: object) {
     return this.authPostReq(`${this.url}user/updatepassword`, data);
   }
-  pushRefList(data: Object) {
+  pushRefList(data: object) {
     return this.authPostReq(`${this.url}user/updateref`, data);
   }
 }

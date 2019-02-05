@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Đăng Ký Tài Khoản | Blockchain Lotto');
+    this.title.setTitle('Sig Up Account | Blockchain Lotto');
     this.auth.logout();
     this.route.queryParams.subscribe(params => {this.params = params; });
     if (this.params.ref) {

@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.title.setTitle('Đăng Nhập Tài Khoản | Blockchain Lotto');
+    this.title.setTitle('Log In | Blockchain Lotto');
     if (this.authService.loadToken()) {
       this.router.navigate(['/dashboard']);
     }

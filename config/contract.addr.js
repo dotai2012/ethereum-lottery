@@ -1,1 +1,1 @@
-// module.exports = '';
+module.exports = '0x50ad84b1f81fba29F7A32743CF8056C209e41c30';

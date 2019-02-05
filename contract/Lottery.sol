@@ -7,7 +7,7 @@ contract Lottery {
     address[] public lastConsolationPrize;
     uint[] consolationPrizeIndexes;
     bool public lockGate = false;
-    
+
     function Lottery() public {
         manager = msg.sender;
     }

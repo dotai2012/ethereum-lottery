@@ -57,10 +57,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
           label: 'Dataset',
         }],
         labels: [
-          'Giai Dac Biet',
-          'Giai Khuyến Khích',
+          'First Prize',
+          'Consolation Prize',
           'Marketing',
-          'Nha Phat Trien',
+          'Developer',
         ],
       },
       options: {

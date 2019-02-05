@@ -26,10 +26,10 @@
       </div>
       <div class="alert alert-success" role="alert" *ngIf="showWinner">
         <h4 class="alert-heading">CONGRATULATIONS !!! You received the prize in the last week's spin</h4>
-        <p>Going back <a routerLink="//">Homepage</a> to see the winning list details</p>
+        <p>Going back <a routerLink="/">Homepage</a> to see the winning list details</p>
       </div>
     <div class="lucky-outer" *ngIf="!notFoundMeta">
-        <button [attr.disabled]="disablePlay ? '' : null" type="button" class="btn btn-primary lucky-btn" (click)="this.onPlay()">Thử Vận May</button>
+        <button [attr.disabled]="disablePlay ? '' : null" type="button" class="btn btn-primary lucky-btn" (click)="this.onPlay()">Give It A Shot</button>
     </div>
   </div>
   <div class="col-md-6 col-sm-12">

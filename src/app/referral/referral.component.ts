@@ -11,7 +11,7 @@ export class ReferralComponent implements OnInit {
   constructor(private title: Title) { }
 
   ngOnInit() {
-    this.title.setTitle('Giới Thiệu Bạn Bè | Blockchain Lotto');
+    this.title.setTitle('Refer A Friend | Blockchain Lotto');
   }
 
 }

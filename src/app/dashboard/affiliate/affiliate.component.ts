@@ -13,25 +13,25 @@ import { Title } from '@angular/platform-browser';
 export class AffiliateComponent implements OnInit {
   userProfile;
   // tslint:disable-next-line:max-line-length
-  linkRef: string = `${this.windowRef.nativeWindow.location.protocol}//${this.windowRef.nativeWindow.location.hostname}/register?ref=${JSON.parse(localStorage.getItem('user')).id}`;
-  totalRef: number = 0;
+  linkRef = `${this.windowRef.nativeWindow.location.protocol}//${this.windowRef.nativeWindow.location.hostname}/register?ref=${JSON.parse(localStorage.getItem('user')).id}`;
+  totalRef = 0;
   email: string;
   withdraw: boolean;
-  withdrawText: string = 'Rút Tiền';
+  withdrawText = 'Rút Tiền';
   address: string;
   refList: string;
   bonus;
 
-  disabledReq1: boolean = true;
-  disabledReq2: boolean = false;
+  disabledReq1 = true;
+  disabledReq2 = false;
 
-  isSent: boolean = false;
+  isSent = false;
   balance: number;
   constructor(private data: DataService,
-    private auth: AuthService,
-    private modal: NgbModal,
-    private title: Title,
-    private windowRef: WindowService) { }
+              private auth: AuthService,
+              private modal: NgbModal,
+              private title: Title,
+              private windowRef: WindowService) { }
 
   ngOnInit() {
     this.title.setTitle('Giới Thiệu Bạn Bè | Blockchain Lotto');
